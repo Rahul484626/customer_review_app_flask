@@ -1,0 +1,48 @@
+{% block body %}
+    <div class="container">
+
+
+        <form action="/Review"  method="POST">
+            <div class="group">
+                <label for="name">
+                    <p>Name</p>
+                    <input type="text" placeholder="Name">
+                </label>
+            </div>
+            <div class="group">
+                <label for="product">
+                    <p>Product</p>
+                    <input type="text" placeholder="product name">
+                </label>
+            </div>
+            <div class="group">
+                <label for="review">
+                    <p>Review</p>
+                    <textarea name="review" id="" cols="30" rows="10"></textarea>
+                </label>
+            </div>
+            <a href="/Review"><button class="btn">Submit</button></a>
+
+            <table style="width: 100%">
+                <tr>
+                    <th>sno</th>
+                    <th>name</th>
+                    <th>product</th>
+                    <th>reviews</th>
+                    <th>Delete</th>
+                </tr>
+                {% for review in reviews %}
+                <tr>
+                    <td>{{review.sno}}</td>
+                    <td>{{review.name}}</td>
+                    <td>{{review.product}}</td>
+                    <td>{{review.review}}</td>
+                    <td><a href="/delete/{{review.sno}}"><button class="btn">Delete</button></a></td>
+                </tr>
+                {% endfor %}
+            
+            </table>
+
+        </form>
+    </div>
+{% endblock %}
